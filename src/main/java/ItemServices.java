@@ -47,7 +47,7 @@ public class ItemServices {
         Gson gson = new Gson();
 
 
-        Item[] item = gson.fromJson( jsonObject.getAsJsonArray("results") , Item[].class);
+        Item[] item = gson.fromJson( jsonObject.getAsJsonArray("results"), Item[].class);
 
         return item;
 
