@@ -1,6 +1,6 @@
 import com.google.gson.annotations.SerializedName;
 
-public class Item {
+public class Item implements Comparable{
 
     private String id;
     @SerializedName("site_id")
@@ -14,9 +14,11 @@ public class Item {
     @SerializedName("stop_time")
     private String stopTime;
     private String thumbnail;
+    private String[] tags;
 
 
-    public Item(String id, String siteId, String title, Double price, String currencyId, String listyngTypeId, String stopTime, String thumbnail) {
+
+    public Item(String id, String siteId, String title, Double price, String currencyId, String listyngTypeId, String stopTime, String thumbnail , String[] tags) {
         this.id = id;
         this.siteId = siteId;
         this.title = title;
@@ -25,6 +27,7 @@ public class Item {
         this.listyngTypeId = listyngTypeId;
         this.stopTime = stopTime;
         this.thumbnail = thumbnail;
+        this.tags = tags;
     }
 
     public String getId() {
@@ -89,5 +92,18 @@ public class Item {
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

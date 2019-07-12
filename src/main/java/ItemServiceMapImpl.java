@@ -4,20 +4,20 @@ import java.util.HashMap;
 
 public class ItemServiceMapImpl implements ItemService {
 
-    private HashMap<String, Item> itemMap;
+    private HashMap<String, Item[]> itemMap;
 
     public ItemServiceMapImpl(){
-        itemMap = new HashMap<String, Item>();
+        itemMap = new HashMap<>();
     }
 
 
     @Override
-    public void addItem(Item item) {
+    public void addItem(Item[] item) {
 
     }
 
     @Override
-    public Collection<Item> getItems() {
+    public Collection<Item> getItems(HashMap<String, Item[]> item) {
         return null;
     }
 

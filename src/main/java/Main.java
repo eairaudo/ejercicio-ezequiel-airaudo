@@ -18,7 +18,7 @@ public class Main {
 
             String qr = request.queryParams("q");
 
-            Item[] item = itemController.getResponse(qr);
+            HashMap<String, Item[]> item = itemController.getResponse(qr);
 
             response.type("application/json");
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS,
@@ -40,11 +40,14 @@ public class Main {
 
         });
 
-        get("sortByPrice" , (request, response) -> {
+        get("sorted" , (request, response) -> {
 
             String qr = request.queryParams("q");
+            String type = request.queryParams("type");
+            String ord = request.queryParams("order");
 
-            HashMap<String, Double> item = itemController.sortPrice(qr);
+
+            List<Item> item = itemController.sorted(qr , type , ord);
 
             response.type("application/json");
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS,
@@ -52,6 +55,36 @@ public class Main {
                             .toJsonTree(item)));
 
         });
+
+        get("filterPrice" , (request, response) -> {
+
+            String qr = request.queryParams("q");
+            String min = request.queryParams("min");
+            String max = request.queryParams("max");
+
+
+            List<Item> item = itemController.filterPrice(qr , min , max);
+
+            response.type("application/json");
+            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS,
+                    new Gson()
+                            .toJsonTree(item)));
+
+        });
+
+        get("containsGoodQuality" , (request, response) -> {
+
+            String qr = request.queryParams("q");
+
+            List<Item> item = itemController.containsGoodQuality(qr);
+
+            response.type("application/json");
+            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS,
+                    new Gson()
+                            .toJsonTree(item)));
+
+        });
+
 
     }
 }
