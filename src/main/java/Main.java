@@ -14,6 +14,10 @@ public class Main {
 
         ItemController itemController = new ItemController();
 
+        /**
+         * endpoint de busqueda normal
+         */
+
         get("search" , (request, response) -> {
 
             String qr = request.queryParams("q");
@@ -27,6 +31,10 @@ public class Main {
 
         });
 
+        /**
+         * endpoint de busqueda de solamente titulos
+         */
+
         get("title" , (request, response) -> {
 
             String qr = request.queryParams("q");
@@ -39,6 +47,10 @@ public class Main {
                             .toJsonTree(item)));
 
         });
+
+        /**
+         * endpoint de ordenamiento por precio o listing type
+         */
 
         get("sorted" , (request, response) -> {
 
@@ -56,6 +68,10 @@ public class Main {
 
         });
 
+        /**
+         * endpoint de filtrado por rango de precios
+         */
+
         get("filterPrice" , (request, response) -> {
 
             String qr = request.queryParams("q");
@@ -71,6 +87,10 @@ public class Main {
                             .toJsonTree(item)));
 
         });
+
+        /**
+         * endpoint de busqueda si contiene goodquality
+         */
 
         get("containsGoodQuality" , (request, response) -> {
 

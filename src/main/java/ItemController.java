@@ -1,7 +1,4 @@
 
-
-import org.omg.CORBA.MARSHAL;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -92,9 +89,21 @@ public class ItemController {
 
         Item[] items = itemServices.obtainResponse(query);
 
-        List<Item> result = Arrays.asList(items);
+        List<Item> filter = new ArrayList<>();
 
-        return result.stream().filter(p -> "good_quality_picture".equals(p.getTags())).collect(Collectors.toList());
+
+        for (Item i : items){
+            if(i.getTags() != null){
+                String [] tag = i.getTags();
+                for (int n = 0; n < tag.length; n++){
+                    if(tag[n].compareTo("good_quality_thumbnail") == 0){
+                        filter.add(i); }
+                }
+
+            }
+        }
+
+        return filter;
 
     }
 
